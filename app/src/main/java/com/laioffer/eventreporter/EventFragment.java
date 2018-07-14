@@ -21,9 +21,7 @@ public class EventFragment extends Fragment {
     OnItemSelectListener mCallback;
 
     // Container Activity must implement this interface
-    public interface OnItemSelectListener {
-        public void onItemSelected(int position);
-    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -49,15 +47,14 @@ public class EventFragment extends Fragment {
                 getActivity(),
                 android.R.layout.simple_list_item_1,
                 getEventNames());
-
-        // Assign adapter to ListView.
-        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 mCallback.onItemSelected(i);
             }
         });
+        // Assign adapter to ListView.
+        listView.setAdapter(adapter);
         return view;
     }
 
@@ -69,6 +66,10 @@ public class EventFragment extends Fragment {
                 "Event10", "Event11", "Event12"};
         return names;
 
+    }
+
+    public interface OnItemSelectListener {
+        public void onItemSelected(int position);
     }
 
 
