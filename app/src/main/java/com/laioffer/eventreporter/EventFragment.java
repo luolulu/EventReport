@@ -21,6 +21,9 @@ public class EventFragment extends Fragment {
     OnItemSelectListener mCallback;
 
     // Container Activity must implement this interface
+    public interface OnItemSelectListener {
+        public void onItemSelected(int position);
+    }
 
 
     @Override
@@ -68,9 +71,6 @@ public class EventFragment extends Fragment {
 
     }
 
-    public interface OnItemSelectListener {
-        public void onItemSelected(int position);
-    }
 
 
 }

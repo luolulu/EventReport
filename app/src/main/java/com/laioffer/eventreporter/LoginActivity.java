@@ -30,10 +30,14 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
+        //test
+        // Write a message to the database
 
 
-        // Firebase uses singleton to initialize the sdk
+
+
+        // FireBase uses singleton to initialize the sdk
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mUsernameEditText = (EditText) findViewById(R.id.editTextLogin);
@@ -50,11 +54,11 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.hasChild(username)) {
-                            Toast.makeText(getBaseContext(),"username is already registered, please change one", Toast.LENGTH_SHORT).show();
-                        } else if (!username.equals("") && !password.equals("")){
+                            Toast.makeText(getBaseContext(), "username is already registered, please change one", Toast.LENGTH_SHORT).show();
+                        } else if (!username.equals("") && !password.equals("")) {
                             // put username as key to set value
                             mDatabase.child("users").child(user.getUsername()).setValue(user);
-                            Toast.makeText(getBaseContext(),"Successfully registered", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(), "Successfully registered", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -64,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
             }
+
         });
 
 
@@ -76,11 +81,15 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.hasChild(username) && (password.equals(dataSnapshot.child(username).child("password").getValue()))) {
-                            Log.i( " Your log", "You successfully login");
+                            Log.i(" Your log", "You successfully login");
+                            Intent myIntent = new Intent(LoginActivity.this, EventActivity.class);
+                            Utils.username = username;
+                            startActivity(myIntent);
                         } else {
-                            Toast.makeText(getBaseContext(),"Please login again", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(), "Please login again", Toast.LENGTH_SHORT).show();
                         }
                     }
+
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
@@ -88,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
             }
+
         });
 
 
