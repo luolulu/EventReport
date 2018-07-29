@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+
         // FireBase uses singleton to initialize the sdk
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
