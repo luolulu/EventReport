@@ -15,6 +15,8 @@ public class Event implements Serializable {
     private long time;
     private String username;
     private String imgUri;
+    private int CommentNumber;
+
 
     public Event() {}
 
@@ -86,4 +88,6 @@ public class Event implements Serializable {
     public void setImgUri(String imgUri) {
         this.imgUri = imgUri;
     }
+
+    public int getCommentNumber() {return CommentNumber;}
 }
