@@ -187,6 +187,9 @@ public class EventReportActivity extends Activity {
         event.setUsername(Utils.username);
         String key = database.child("events").push().getKey();
         event.setId(key);
+        event.setLatitude(mLocationTracker.getLatitude());
+        event.setLongitude(mLocationTracker.getLongitude());
+
         database.child("events").child(key).setValue(event, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {

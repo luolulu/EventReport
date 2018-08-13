@@ -37,6 +37,26 @@ public class Event implements Serializable {
     public String getAddress() { return this.address; }
     public String getDescription() { return this.description; }
 
+    private double latitude;
+    private double longitude;
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+
     public void setTitle(String title) {
         this.title = title;
     }

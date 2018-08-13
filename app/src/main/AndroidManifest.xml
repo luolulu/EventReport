@@ -9,6 +9,7 @@
     <uses-feature android:name="android.hardware.location.gps" />
 
     <application
+        android:name=".CustomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,19 +23,41 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".EventActivity" />
-        >
+        <activity android:name=".EventActivity">
+
+        </activity>
+
         <activity
             android:name=".EventReportActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
+            android:windowSoftInputMode="stateVisible|adjustResize">
+        </activity>
         <activity
             android:name=".CommentActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize"
             android:label="@string/title_activity_comment"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <service
+            android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="CHANGE WITH YOUR OWN KEY " />
+
     </application>
 
 </manifest>
